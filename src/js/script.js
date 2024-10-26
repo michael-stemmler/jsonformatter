@@ -1,51 +1,27 @@
-function revealMessage() {
-    document.getElementById("hiddenMessage").style.display = 'block';
+function formatJson() {
+    writeOutputString(spaces = 2);
 }
 
-function countDown() {
-    var currentVal = document.getElementById("countDownButton").innerHTML;
-    var newVal = 0;
-    
-    if (currentVal > 0){
-        newVal = currentVal-1;
+function removeSpaces() {
+    writeOutputString(spaces = 0);
+}
+
+function writeOutputString(spaces) {
+    const jsonObj = toJson(document.getElementById("textField").value)
+
+    if (jsonObj) {
+        const output = JSON.stringify(jsonObj, null, spaces);
+        document.getElementById("textField").value = output;
     }
-    document.getElementById("countDownButton").innerHTML = newVal; 
+    else {
+        document.getElementById("textField").value = "Not a valid Json String!";
+    }
 }
 
-function formatJson(){
-    const input = document.getElementById("textField").value;
-    let isJson = true;
-    let jsonObj = null;
+function toJson(input) {
     try {
-        jsonObj= JSON.parse(input);
+        return JSON.parse(input);
     } catch (error) {
-        isJson = false;
-    }
-    
-    if(isJson) {
-        const output = JSON.stringify(jsonObj,null, 2);
-        document.getElementById("textField").value=output;
-    }
-    else{
-        document.getElementById("textField").value="Not a valid Json String!";
-    }
-}
-
-function removeSpaces(){
-    const input = document.getElementById("textField").value;
-    let isJson = true;
-    let jsonObj = null;
-    try {
-        jsonObj= JSON.parse(input);
-    } catch (error) {
-        isJson = false;
-    }
-    
-    if(isJson) {
-        const output = JSON.stringify(jsonObj);
-        document.getElementById("textField").value=output;
-    }
-    else{
-        document.getElementById("textField").value="Not a valid Json String!";
+        return null;
     }
 }
