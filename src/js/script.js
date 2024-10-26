@@ -18,6 +18,11 @@ function writeOutputString(spaces) {
     }
 }
 
+function cleanUp() {
+    document.getElementById("textField").value = "";
+}
+
+/////////////////////////////////////
 function toJson(input) {
     try {
         return JSON.parse(input);
