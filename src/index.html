@@ -11,11 +11,21 @@
 
     <button type="button" id="format" onclick="formatJson()">Format</button>
     <button type="button" id="remove" onclick="removeSpaces()">Remove Spaces</button>
+    <button type="button" id="copy" onclick="copyContent()">Copy</button>
     <button type="button" id="clean" onclick="cleanUp()">Cleanup</button>
 
     <div id="textarea">
         <textarea id="textField" name="textField" rows="30" cols="100" placeholder="Enter Json String..."></textarea>
     </div>
+
+    <script>
+        window.onload = function () {
+            let button = document.getElementById("copy");
+            button.disabled = ! window.isSecureContext;
+
+            
+        };
+    </script>
 
     <script src="js/script.js"></script>
 </body>

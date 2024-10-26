@@ -22,6 +22,15 @@ function cleanUp() {
     document.getElementById("textField").value = "";
 }
 
+async function copyContent() {
+    try {
+        await navigator.clipboard.writeText(document.getElementById("textField").value);
+        console.log('Content copied to clipboard');
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+}
+
 /////////////////////////////////////
 function toJson(input) {
     try {
