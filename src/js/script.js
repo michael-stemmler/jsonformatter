@@ -34,7 +34,8 @@ async function copyContent() {
 /////////////////////////////////////
 function toJson(input) {
     try {
-        return JSON.parse(input);
+        r = input.replace(/'/g, '"');
+        return JSON.parse(r);
     } catch (error) {
         return null;
     }
