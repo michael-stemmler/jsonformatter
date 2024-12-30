@@ -1,6 +1,7 @@
 let configuredNumOfSpaces = Number(document.getElementById("spaces").value);
 
 document.getElementById("spaces").addEventListener("input", updateSpaces);
+document.getElementById("single_quote").addEventListener("click", updateQuotes)
 
 function formatJson() {
     writeOutputString(spaces = configuredNumOfSpaces);
@@ -14,7 +15,11 @@ function writeOutputString(spaces=0, writeErrorMsg=true) {
     const jsonObj = toJson(document.getElementById("textField").value)
 
     if (jsonObj) {
-        const output = JSON.stringify(jsonObj, null, spaces);
+        let output = JSON.stringify(jsonObj, null, spaces);
+        if(document.getElementById("single_quote").checked){
+            output = output.replace(/"/g, "'");
+        }
+
         document.getElementById("textField").value = output;
     }
     else if (writeErrorMsg) {
@@ -37,6 +42,10 @@ async function copyContent() {
 function updateSpaces(e) {
     configuredNumOfSpaces = Number(e.target.value);
     writeOutputString(spaces=configuredNumOfSpaces, writeErrorMsg=false);
+}
+
+function updateQuotes(e) {
+    writeOutputString(spaces=configuredNumOfSpaces, single_quotes=e.target.checked,writeErrorMsg=false);
 }
 
 /////////////////////////////////////
