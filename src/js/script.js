@@ -45,7 +45,7 @@ function updateSpaces(e) {
 }
 
 function updateQuotes(e) {
-    writeOutputString(spaces=configuredNumOfSpaces, single_quotes=e.target.checked,writeErrorMsg=false);
+    writeOutputString(spaces=configuredNumOfSpaces, writeErrorMsg=false);
 }
 
 /////////////////////////////////////
